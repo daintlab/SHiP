@@ -1,0 +1,101 @@
+common:
+  PROMPT_ROOT: data/prompts
+  SRC_IMAGE_ROOT: data/subject
+  SUBJECT_WHITELIST:
+  EXPECT_NUM_PROMPTS:
+  WIDTH: 1024
+  HEIGHT: 1024
+  DTYPE: bf16
+  SEEDS: [
+    184273, 90512, 771394, 42019, 638201,
+    912845, 33764, 560218, 129087, 748392,
+    295601, 87344, 660912, 418905, 50217,
+    990381, 214569, 384720, 76105, 845913,
+    130482, 697321, 45988, 908234, 271640,
+    536902, 18490, 799154, 624378, 350961
+  ]
+
+kontext:
+  REF_IMAGE_NAME: 0.jpg
+  OUT_ROOT: /result/kontext
+  PROMPT_INDICES:
+  MODEL_ID: black-forest-labs/FLUX.1-Kontext-dev
+  NUM_STEPS: 30
+  GUIDANCE_SCALE: 2.5
+  SHIP:
+    ENABLED: true            # options: true, false
+    SITE: attn_out           # options: attn_out, mlp_out, block_input, block_output
+    SELECTED_TOKEN: target   # options: target, ref, text
+    NOISE:
+      MODE: block_relative_std  # options: block_relative_std, absolute
+      STD: 3.0                  # noise scale (lambda)
+    EARLY_STEPS: 3           # number of perturbed denoising steps (k)
+    START_STEP: 0            # first perturbed denoising step
+
+flux2:
+  REF_IMAGE_NAME: 0.jpg
+  OUT_ROOT: /result/flux2
+  MODEL_ID: black-forest-labs/FLUX.2-dev
+  NUM_STEPS: 28
+  GUIDANCE_SCALE: 4.0
+  MAX_SEQUENCE_LENGTH: 512
+  USE_REFERENCE_IMAGE: true
+  DEVICE_MAP: balanced
+  MAX_MEMORY:
+    0: 80GiB
+    1: 80GiB
+  SHIP:
+    ENABLED: true            # options: true, false
+    SITE: attn_out           # options: attn_out, mlp_out, block_input, block_output
+    SELECTED_TOKEN: target   # options: target, ref, text
+    NOISE:
+      MODE: block_relative_std  # options: block_relative_std, absolute
+      STD: 3.0                  # noise scale (lambda)
+    EARLY_STEPS: 3           # number of perturbed denoising steps (k)
+    START_STEP: 0            # first perturbed denoising step
+
+qwen_image_edit:
+  REF_IMAGE_NAME: 0.jpg
+  OUT_ROOT: /result/qwen_image_edit
+  MODEL_ID: Qwen/Qwen-Image-Edit-2511
+  PIPELINE_CLASS: QwenImageEditPlusPipeline
+  NUM_STEPS: 40
+  TRUE_CFG_SCALE: 4.0
+  GUIDANCE_SCALE: 1.0
+  NEGATIVE_PROMPT: " "
+  MAX_SEQUENCE_LENGTH: 512
+  DEVICE_MAP:
+  MAX_MEMORY:
+  SHIP:
+    ENABLED: true            # options: true, false
+    SITE: attn_out           # options: attn_out, mlp_out, block_input, block_output
+    SELECTED_TOKEN: target   # options: target, ref, text
+    NOISE:
+      MODE: block_relative_std  # options: block_relative_std, absolute
+      STD: 3.0                  # noise scale (lambda)
+    EARLY_STEPS: 3           # number of perturbed denoising steps (k)
+    START_STEP: 0            # first perturbed denoising step
+
+firered:
+  REF_IMAGE_NAME: 0.jpg
+  OUT_ROOT: /result/firered
+  MODEL_ID: FireRedTeam/FireRed-Image-Edit-1.0
+  PIPELINE_CLASS: QwenImageEditPlusPipeline
+  NUM_STEPS: 40
+  TRUE_CFG_SCALE: 4.0
+  GUIDANCE_SCALE:
+  NEGATIVE_PROMPT: " "
+  MAX_SEQUENCE_LENGTH:
+  WIDTH:
+  HEIGHT:
+  DEVICE_MAP:
+  MAX_MEMORY:
+  SHIP:
+    ENABLED: true            # options: true, false
+    SITE: attn_out           # options: attn_out, mlp_out, block_input, block_output
+    SELECTED_TOKEN: target   # options: target, ref, text
+    NOISE:
+      MODE: block_relative_std  # options: block_relative_std, absolute
+      STD: 3.0                  # noise scale (lambda)
+    EARLY_STEPS: 3           # number of perturbed denoising steps (k)
+    START_STEP: 0            # first perturbed denoising step
