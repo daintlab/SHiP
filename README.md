@@ -25,7 +25,16 @@ conda activate ship
 huggingface-cli login   # FLUX.1 Kontext [dev] and FLUX.2 [dev] are gated models
 ```
 
-## 📂 Datasets
+## 📂 Models and Datasets
+
+### Models
+
+- FLUX.1 Kontext: [black-forest-labs/FLUX.1-Kontext-dev](https://huggingface.co/black-forest-labs/FLUX.1-Kontext-dev)
+- FLUX.2: [black-forest-labs/FLUX.2-dev](https://huggingface.co/black-forest-labs/FLUX.2-dev)
+- Qwen-Image-Edit: [Qwen/Qwen-Image-Edit-2511](https://huggingface.co/Qwen/Qwen-Image-Edit-2511)
+- FireRed-Image-Edit: [FireRedTeam/FireRed-Image-Edit-1.0](https://huggingface.co/FireRedTeam/FireRed-Image-Edit-1.0)
+
+### Datasets
 
 `data/` contains the benchmark used in the paper: 15 subjects from [DreamBooth](https://github.com/google/dreambooth) and [Textual Inversion](https://github.com/rinongal/textual_inversion), each with 9 prompts from [DreamBench++](https://github.com/yuangpeng/dreambench_plus).
 
@@ -57,23 +66,17 @@ SHIP:
 
 ### 1. FLUX.1 Kontext
 
-[black-forest-labs/FLUX.1-Kontext-dev](https://huggingface.co/black-forest-labs/FLUX.1-Kontext-dev)
-
 ```bash
 python models/kontext/inference.py --config config.yml
 ```
 
 ### 2. FLUX.2
 
-[black-forest-labs/FLUX.2-dev](https://huggingface.co/black-forest-labs/FLUX.2-dev)
-
 ```bash
 CUDA_VISIBLE_DEVICES=0,1 python models/flux2/inference.py --config config.yml --rank 0 --world_size 1
 ```
 
 ### 3. Qwen-Image-Edit / FireRed-Image-Edit
-
-[Qwen/Qwen-Image-Edit-2511](https://huggingface.co/Qwen/Qwen-Image-Edit-2511), [FireRedTeam/FireRed-Image-Edit-1.0](https://huggingface.co/FireRedTeam/FireRed-Image-Edit-1.0)
 
 ```bash
 python models/qwen_image_edit/inference.py --config config.yml
