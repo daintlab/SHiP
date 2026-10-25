@@ -1,14 +1,11 @@
-[![NeurIPS 2026](https://img.shields.io/badge/NeurIPS-2026-blue)](TODO)
+![NeurIPS 2026](https://img.shields.io/badge/NeurIPS-2026-blue)
 
 # Identifying and Mitigating Diversity Collapse in Zero-Shot Personalization with I2I Editing Models
 
 Uichan Lee\*, Jongeon Baek\*, Sangheum Hwang†
 
-[[Paper]](TODO)
-
-<!-- TODO: main figure -->
 <p align="center">
-  <img src="assets/main.jpg" alt="SHiP" width="100%">
+  <img src="assets/main.png" alt="SHiP" width="100%">
 </p>
 
 ## 📌 Abstract
