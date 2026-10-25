@@ -1,4 +1,4 @@
-common:
+common_inference:
   PROMPT_ROOT: data/prompts
   SRC_IMAGE_ROOT: data/subject
   SUBJECT_WHITELIST:
@@ -99,3 +99,9 @@ firered:
       STD: 3.0                  # noise scale (lambda)
     EARLY_STEPS: 3           # number of perturbed denoising steps (k)
     START_STEP: 0            # first perturbed denoising step
+
+eval:
+  SRC_IMAGE_ROOT: data/subject
+  PROMPT_ROOT: data/prompts
+  REF_IMAGE_NAME: 0.jpg
+  OUT_ROOT: /result/kontext   # generated images to evaluate; metrics.json is saved here

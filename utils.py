@@ -47,15 +47,16 @@ def _section(data: dict[str, Any], name: str) -> dict[str, Any]:
     raise KeyError(f"Missing config section: {name}")
 
 
-def load_config(config_path: str, section: str) -> dict[str, Any]:
+def load_config(config_path: str, section: str, base: Optional[str] = "common_inference") -> dict[str, Any]:
+    """Return `section` merged on top of `base` (model sections use common_inference; eval uses base=None)."""
     with open(config_path, "r", encoding="utf-8") as f:
         data = yaml.safe_load(f) or {}
     if not isinstance(data, dict):
         raise ValueError(f"Config must be a mapping: {config_path}")
 
-    common = data.get("common", data.get("COMMON", {})) or {}
+    common = (data.get(base) or {}) if base else {}
     if not isinstance(common, dict):
-        raise ValueError("Config section 'common' must be a mapping.")
+        raise ValueError(f"Config section '{base}' must be a mapping.")
     return _deep_merge(common, _section(data, section))
 
 

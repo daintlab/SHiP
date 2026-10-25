@@ -82,8 +82,18 @@ python models/firered/inference.py --config config.yml
 
 ## 📊 Evaluation
 
+Evaluation settings are in the `eval` section of `config.yml`:
+
+```yaml
+eval:
+  SRC_IMAGE_ROOT: data/subject
+  PROMPT_ROOT: data/prompts
+  REF_IMAGE_NAME: 0.jpg
+  OUT_ROOT: /result/kontext   # generated images to evaluate; metrics.json is saved here
+```
+
 ```bash
-python eval/metrics.py --config config.yml --model kontext   # kontext | flux2 | qwen_image_edit | firered
+python eval/metrics.py --config config.yml
 ```
 
 This reports Vendi and LPIPS (plus CLIP-I, DINO and CLIP-T). GPT-ID and GPT-Text follow the [DreamBench++](https://github.com/yuangpeng/dreambench_plus) protocol with GPT-5-mini.
