@@ -19,7 +19,7 @@ git clone https://github.com/daintlab/SHiP.git
 cd SHiP
 conda env create -f environment.yml
 conda activate ship
-huggingface-cli login   # FLUX.1 Kontext [dev] and FLUX.2 [dev] are gated models
+hf auth login   # FLUX.1 Kontext [dev] and FLUX.2 [dev] are gated models
 ```
 
 ## 📂 Models and Datasets
